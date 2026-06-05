@@ -10,7 +10,7 @@ This public mirror uses synthetic sample CSVs so the dashboard can be tested wit
 - Subscription lifecycle analytics: trials, conversions, churn, renewals, active members.
 - Order analytics: first orders, order frequency, gifts/notes, item pricing, customer behavior.
 - Business KPI dashboarding with Streamlit, matplotlib and seaborn.
-- PDF report generation with ReportLab/matplotlib.
+- PDF report generation with matplotlib.
 
 ## Run locally
 
