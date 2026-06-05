@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.DS_Store
+.streamlit/
+
+# Local/private input exports
+private_data/
+raw_data/
+*.xlsx
