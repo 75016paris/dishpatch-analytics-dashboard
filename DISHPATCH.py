@@ -4853,12 +4853,16 @@ def plot_renew_churn_metrics(df):
     return fig
 
 # %%
-from reportlab.lib.pagesizes import A3, landscape
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, PageBreak, Table, TableStyle
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import cm
-from reportlab.lib import colors
-from reportlab.lib.enums import TA_CENTER, TA_LEFT
+try:
+    from reportlab.lib.pagesizes import A3, landscape
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image, PageBreak, Table, TableStyle
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import cm
+    from reportlab.lib import colors
+    from reportlab.lib.enums import TA_CENTER, TA_LEFT
+except ModuleNotFoundError:
+    A3 = landscape = SimpleDocTemplate = Paragraph = Spacer = Image = PageBreak = Table = TableStyle = None
+    getSampleStyleSheet = ParagraphStyle = cm = colors = TA_CENTER = TA_LEFT = None
 import glob
 
 def create_analysis_report_pdf(today_date, today_iso, analysis_dir='analysis'):
@@ -4866,6 +4870,9 @@ def create_analysis_report_pdf(today_date, today_iso, analysis_dir='analysis'):
     Create a comprehensive PDF report page by page
     Uses harmonized function naming conventions and file patterns
     """
+
+    if SimpleDocTemplate is None:
+        raise RuntimeError("ReportLab is required for create_analysis_report_pdf(). Install reportlab to use this optional export.")
 
     print("=== GENERATING PDF REPORT ===")
 
