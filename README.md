@@ -1,16 +1,20 @@
-# Dishpatch Analytics Dashboard
+# Food Subscription Analytics Dashboard
 
-Streamlit analytics dashboard prototype for subscription and order data.
+Internal reporting tool for weekly generated dashboard to review performance and support business decisions.
 
-This public mirror uses synthetic sample CSVs so the dashboard can be tested without private customer/order exports.
+The original version was built for a food subscription company to support weekly reporting and turn raw CSV exports of subscriptions and orders into weekly business KPIs: trials, conversion, churn, renewals, and order behaviour.
 
-## What it demonstrates
+This public portfolio-safe mirror uses synthetic sample CSVs so the dashboard can be tested without exposing private customer/order exports or identifying the client.
 
-- CSV cleaning and transformation with pandas.
-- Subscription lifecycle analytics: trials, conversions, churn, renewals, active members.
-- Order analytics: first orders, order frequency, gifts/notes, item pricing, customer behavior.
-- Business KPI dashboarding with Streamlit, matplotlib and seaborn.
-- PDF report generation with matplotlib.
+## Purpose
+
+The dashboard focuses on:
+
+- Trial starts and conversion to full membership.
+- Active members, churn, refunds, and renewals.
+- Order behaviour after subscription.
+- Customer/order matching across messy exports.
+- Downloadable PDF reporting for weekly review.
 
 ## Run locally
 
@@ -38,7 +42,8 @@ See `DATA_SCHEMA.md` for column notes.
 Smoke check:
 
 ```bash
-python3 -m compileall app.py DISHPATCH.py
+python3 -m compileall app.py analytics data_validation.py
+python3 scripts/smoke_test.py
 streamlit run app.py --server.headless true --server.port 8508
 curl http://localhost:8508/_stcore/health
 ```
@@ -51,7 +56,7 @@ ok
 
 ## Status
 
-Prototype/portfolio project. It is useful to demonstrate business analytics, KPI design, CSV cleaning, and dashboard/reporting workflows. It is not presented as a production BI platform.
+Portfolio-safe mirror of an internal analytics tool originally built for a food subscription company. This public version uses synthetic data and is not presented as the original private deployment or as a full production BI platform.
 
 ## License
 
